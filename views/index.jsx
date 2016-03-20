@@ -16,7 +16,7 @@ class TodoList extends React.Component {
   render() {
             return (
                 <div className="todoList">
-                    <table style={{border: "2px solid black"}}>
+                    <table style={style}>
                       <tbody>
                         <Todo title="Shopping">Milk</Todo>
                         <Todo title="Hair cut">13:00</Todo>
@@ -40,7 +40,7 @@ class Todo extends React.Component {
   }
 
   handleChange(e) {
-      this.setState({checked: e.target.checked});
+    this.setState({checked: e.target.checked});
   }
 
   setState(state) {
@@ -74,3 +74,7 @@ class TodoForm extends React.Component {
 		);
 	}
 }
+
+let style = {
+  border: "1px solid black"
+};
