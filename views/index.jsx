@@ -40,8 +40,6 @@ var Todo = React.createClass({
   },
 
   render() {
-    console.log("this.state.style");
-    console.log(this.state.style);
     return (
         <tr style={this.state.style}>
             <td style={{border: "1px solid black"}}>
