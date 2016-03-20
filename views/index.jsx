@@ -18,8 +18,8 @@ class TodoList extends React.Component {
       return <Todo title={obj.title} key={obj.title}>{obj.detail}</Todo>});
     
     return (
-      <div className = "todoList">
-        <table style={{border: "2px solid black"}}>
+      <div className="todoList">
+        <table style={style.tableContent}>
           <tbody>
             {todo}
           </tbody>
@@ -29,28 +29,21 @@ class TodoList extends React.Component {
   }
 }
 
-class Todo extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = this.getInitialState();
-  }
-  
+
+var Todo = React.createClass({
   getInitialState() {
-    return {checked: false};
-  }
+    return {checked: false, style: style.notCheckedTodo};
+  },
 
   handleChange(e) {
-    this.setState({checked: e.target.checked});
-  }
-
-  setState(state) {
-    this.state = state;
-  }
+    this.setState({checked: e.target.checked, style: e.target.checked ? style.checkedTodo : style.notCheckedTodo});
+  },
 
   render() {
+    console.log("this.state.style");
+    console.log(this.state.style);
     return (
-        <tr>
+        <tr style={this.state.style}>
             <td style={{border: "1px solid black"}}>
                 <input type="checkbox" checked={this.state.checked} onChange={this.handleChange}/>
             </td>
@@ -59,7 +52,7 @@ class Todo extends React.Component {
         </tr>
     );
   }
-}
+})
 
 Todo.propTypes = {
   title: React.PropTypes.string.isRequired
@@ -77,5 +70,13 @@ class TodoForm extends React.Component {
 }
 
 let style = {
-    border: "1px solid black"
+  checkedTodo: {
+      textDecoration: "line-through"
+  },
+  notCheckedTodo: {
+      textDecoration: "none"
+  },
+  tableContent: {
+      border: "2px solid black"
+  }
 };
