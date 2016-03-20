@@ -17,10 +17,11 @@ class TodoList extends React.Component {
             return (
                 <div className="todoList">
                     <table style={{border: "2px solid black"}}>
-                        <tbody>
+                      <tbody>
                         <Todo title="Shopping">Milk</Todo>
                         <Todo title="Hair cut">13:00</Todo>
-                        </tbody>
+                        <Todo title="Learn React">15:00</Todo>
+                      </tbody>
                     </table>
                 </div>
             );
@@ -38,6 +39,10 @@ class Todo extends React.Component {
       );
   }
 }
+
+Todo.propTypes = {
+  title: React.PropTypes.number.isRequired
+};
 
 class TodoForm extends React.Component {
   // Write code here
